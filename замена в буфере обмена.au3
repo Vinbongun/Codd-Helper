@@ -19,16 +19,16 @@ If $p[0][0] > 1 Then
     Exit
 EndIf
 
-#Region GUI
+;~ #Region GUI
 ;~ Запускаем GUI и делаем поверх всех окон
-$Form1 = WinSetOnTop(GUICreate("Помощник ЦОДД", 283, 70, 1625, 934), "", 1)
-$Button_Start = GUICtrlCreateButton("Запустить", 104, 16, 75, 38)
-$Text_Status = GUICtrlCreateLabel("Выключен", 8, 25, 83, 24)
-GUICtrlSetFont(-1, 12, 400, 0, "MS Sans Serif")
-GUICtrlSetColor(-1, 0xFF0000)
-$Button1 = GUICtrlCreateButton("Остановить", 192, 16, 75, 38)
-GUISetState(@SW_SHOW)
-#EndRegion GUI
+;~ $Form1 = WinSetOnTop(GUICreate("Помощник ЦОДД", 283, 70, 1625, 934), "", 1)
+;~ $Button_Start = GUICtrlCreateButton("Запустить", 104, 16, 75, 38)
+;~ $Text_Status = GUICtrlCreateLabel("Выключен", 8, 25, 83, 24)
+;~ GUICtrlSetFont(-1, 12, 400, 0, "MS Sans Serif")
+;~ GUICtrlSetColor(-1, 0xFF0000)
+;~ $Button1 = GUICtrlCreateButton("Остановить", 192, 16, 75, 38)
+;~ GUISetState(@SW_SHOW)
+;~ #EndRegion GUI
 
 
 ;~ $button_About = TrayCreateItem("Инструкция")
@@ -71,7 +71,7 @@ While 1
 	$temp_Done = StringReplace($temp, "%%%", "%")
 	ClipPut ( $temp_Done )
 	;~ 	Обновляет в GUI статус выполнения
-GUICtrlSetData($Label7, StringRegExpReplace(StringSplit(WinGetText("ЦОД v.1.0.8.5"), ")",1)[1],'[^0-9]',''))
+;~ GUICtrlSetData($Label7, StringRegExpReplace(StringSplit(WinGetText("ЦОД v.1.0.8.5"), ")",1)[1],'[^0-9]',''))
 	Sleep(100)
 	Until _IsPressed(76) <> 0 ;~ Стоп по нажатию F7
 EndIf
