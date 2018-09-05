@@ -1,9 +1,12 @@
 #Include <Misc.au3>
+#include <GUIConstantsEx.au3>
 ;~ полный список клавиш http://autoit-script.ru/autoit3_docs/libfunctions/_ispressed.htm
 ;~ замена в буфере обмена
 
 ;~ убирает стандартные пункты из трея
 ;~ Opt("TrayMenuMode", 1)
+;~ отключает остановку скрипта по нажатию на иконку в трее
+Opt("TrayAutoPause", 0)
 
 
 ; Проверка на запуск одного экземпляра приложения
