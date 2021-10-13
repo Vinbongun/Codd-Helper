@@ -3,102 +3,102 @@
 #include <GUIConstantsEx.au3>
 #include <StaticConstants.au3>
 #include <WindowsConstants.au3>
-;~ полный список клавиш http://autoit-script.ru/autoit3_docs/libfunctions/_ispressed.htm
-;~ замена в буфере обмена
+;~ РїРѕР»РЅС‹Р№ СЃРїРёСЃРѕРє РєР»Р°РІРёС€ http://autoit-script.ru/autoit3_docs/libfunctions/_ispressed.htm
+;~ Р·Р°РјРµРЅР° РІ Р±СѓС„РµСЂРµ РѕР±РјРµРЅР°
 
-;~ убирает стандартные пункты из трея
+;~ СѓР±РёСЂР°РµС‚ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Рµ РїСѓРЅРєС‚С‹ РёР· С‚СЂРµСЏ
 ;~ Opt("TrayMenuMode", 1)
-;~ отключает остановку скрипта по нажатию на иконку в трее
+;~ РѕС‚РєР»СЋС‡Р°РµС‚ РѕСЃС‚Р°РЅРѕРІРєСѓ СЃРєСЂРёРїС‚Р° РїРѕ РЅР°Р¶Р°С‚РёСЋ РЅР° РёРєРѕРЅРєСѓ РІ С‚СЂРµРµ
 Opt("TrayAutoPause", 0)
 
 
-; Проверка на запуск одного экземпляра приложения
+; РџСЂРѕРІРµСЂРєР° РЅР° Р·Р°РїСѓСЃРє РѕРґРЅРѕРіРѕ СЌРєР·РµРјРїР»СЏСЂР° РїСЂРёР»РѕР¶РµРЅРёСЏ
 $p = ProcessList(StringReplace(@ScriptName,".au3",".exe"))
 If $p[0][0] > 1 Then
-    MsgBox(0,"Внимание", "Приложение уже запущенно", 3)
+    MsgBox(0,"Р’РЅРёРјР°РЅРёРµ", "РџСЂРёР»РѕР¶РµРЅРёРµ СѓР¶Рµ Р·Р°РїСѓС‰РµРЅРЅРѕ", 3)
     Exit
 EndIf
 
 ;~ #Region GUI
-;~ Запускаем GUI и делаем поверх всех окон
-;~ $Form1 = WinSetOnTop(GUICreate("Помощник ЦОДД", 283, 70, 1625, 934), "", 1)
-;~ $Button_Start = GUICtrlCreateButton("Запустить", 104, 16, 75, 38)
-;~ $Text_Status = GUICtrlCreateLabel("Выключен", 8, 25, 83, 24)
+;~ Р—Р°РїСѓСЃРєР°РµРј GUI Рё РґРµР»Р°РµРј РїРѕРІРµСЂС… РІСЃРµС… РѕРєРѕРЅ
+;~ $Form1 = WinSetOnTop(GUICreate("РџРѕРјРѕС‰РЅРёРє Р¦РћР”Р”", 283, 70, 1625, 934), "", 1)
+;~ $Button_Start = GUICtrlCreateButton("Р—Р°РїСѓСЃС‚РёС‚СЊ", 104, 16, 75, 38)
+;~ $Text_Status = GUICtrlCreateLabel("Р’С‹РєР»СЋС‡РµРЅ", 8, 25, 83, 24)
 ;~ GUICtrlSetFont(-1, 12, 400, 0, "MS Sans Serif")
 ;~ GUICtrlSetColor(-1, 0xFF0000)
-;~ $Button1 = GUICtrlCreateButton("Остановить", 192, 16, 75, 38)
+;~ $Button1 = GUICtrlCreateButton("РћСЃС‚Р°РЅРѕРІРёС‚СЊ", 192, 16, 75, 38)
 ;~ GUISetState(@SW_SHOW)
 ;~ #EndRegion GUI
 
 
-;~ $button_About = TrayCreateItem("Инструкция")
-;~ $button_Setup = TrayCreateItem("Настройки")
+;~ $button_About = TrayCreateItem("РРЅСЃС‚СЂСѓРєС†РёСЏ")
+;~ $button_Setup = TrayCreateItem("РќР°СЃС‚СЂРѕР№РєРё")
 While 1
-	If _IsPressed(75) Then ;~ Запуск по нажатию F6
+	If _IsPressed(75) Then ;~ Р—Р°РїСѓСЃРє РїРѕ РЅР°Р¶Р°С‚РёСЋ F6
 		Do
-	$temp = StringReplace(ClipGet ( ), "строен.на уч.", "%")
-				$temp = StringReplace($temp, "строен. на уч.", "%")
-				$temp = StringReplace($temp, "сооружение уч.", "%")
-				$temp = StringReplace($temp, "дом на участке ", "%")
-				$temp = StringReplace($temp, "сооружение", "%")
-				$temp = StringReplace($temp, "санаторий", "%")
-				$temp = StringReplace($temp, "строен.на", "%")
-				$temp = StringReplace($temp, "строен.", "%")
-				$temp = StringReplace($temp, " участок ", "%")
-				$temp = StringReplace($temp, "строение", "%")
-				$temp = StringReplace($temp, "дер. ко", "%")
-				$temp = StringReplace($temp, " у хут.", "%")
-				$temp = StringReplace($temp, "у дер.", "%")
-				$temp = StringReplace($temp, "дом на уч.", "%")
-				$temp = StringReplace($temp, "район ", "%")
-				$temp = StringReplace($temp, "квартал ", "%")
-				$temp = StringReplace($temp, "на уч.", "%")
-				$temp = StringReplace($temp, "вл.", "%")
-				$temp = StringReplace($temp, "строен.", "%")
-				$temp = StringReplace($temp, "деревни ", "%")
-				$temp = StringReplace($temp, "у ст.", "%")
-				$temp = StringReplace($temp, "вблизи дер.", "%")
-				$temp = StringReplace($temp, "вблизи", "%")
-				$temp = StringReplace($temp, "влд.", "%")
-				$temp = StringReplace($temp, "вбл.", "%")
-				$temp = StringReplace($temp, "с/о", "%")
-				$temp = StringReplace($temp, "с.о", "%")
-				$temp = StringReplace($temp, "д.на", "%")
-				$temp = StringReplace($temp, "неопр ", "%")
-				$temp = StringReplace($temp, "тер.", "%")
-				$temp = StringReplace($temp, "дом", "%")
-				$temp = StringReplace($temp, "стр.", "%")
-				$temp = StringReplace($temp, "уч-к", "%")
-				$temp = StringReplace($temp, "кв,", "%")
-				$temp = StringReplace($temp, "р-н", "%")
-				$temp = StringReplace($temp, "уч.", "%")
-				$temp = StringReplace($temp, " уч ", "%")
-				$temp = StringReplace($temp, "г.", "%")
-				$temp = StringReplace($temp, " д ", "%")
-				$temp = StringReplace($temp, " спк ", "%")
-				$temp = StringReplace($temp, "дер.", "%")
-				$temp = StringReplace($temp, "ул.", "%")
-				$temp = StringReplace($temp, "д.", "%")
-				$temp = StringReplace($temp, "ст.", "%")
-				$temp = StringReplace($temp, "с/т", "%")
-				$temp = StringReplace($temp, " ст ", "%")
-				$temp = StringReplace($temp, "с.", "%")
-				$temp = StringReplace($temp, "№", "%")
+	$temp = StringReplace(ClipGet ( ), "СЃС‚СЂРѕРµРЅ.РЅР° СѓС‡.", "%")
+				$temp = StringReplace($temp, "СЃС‚СЂРѕРµРЅ. РЅР° СѓС‡.", "%")
+				$temp = StringReplace($temp, "СЃРѕРѕСЂСѓР¶РµРЅРёРµ СѓС‡.", "%")
+				$temp = StringReplace($temp, "РґРѕРј РЅР° СѓС‡Р°СЃС‚РєРµ ", "%")
+				$temp = StringReplace($temp, "СЃРѕРѕСЂСѓР¶РµРЅРёРµ", "%")
+				$temp = StringReplace($temp, "СЃР°РЅР°С‚РѕСЂРёР№", "%")
+				$temp = StringReplace($temp, "СЃС‚СЂРѕРµРЅ.РЅР°", "%")
+				$temp = StringReplace($temp, "СЃС‚СЂРѕРµРЅ.", "%")
+				$temp = StringReplace($temp, " СѓС‡Р°СЃС‚РѕРє ", "%")
+				$temp = StringReplace($temp, "СЃС‚СЂРѕРµРЅРёРµ", "%")
+				$temp = StringReplace($temp, "РґРµСЂ. РєРѕ", "%")
+				$temp = StringReplace($temp, " Сѓ С…СѓС‚.", "%")
+				$temp = StringReplace($temp, "Сѓ РґРµСЂ.", "%")
+				$temp = StringReplace($temp, "РґРѕРј РЅР° СѓС‡.", "%")
+				$temp = StringReplace($temp, "СЂР°Р№РѕРЅ ", "%")
+				$temp = StringReplace($temp, "РєРІР°СЂС‚Р°Р» ", "%")
+				$temp = StringReplace($temp, "РЅР° СѓС‡.", "%")
+				$temp = StringReplace($temp, "РІР».", "%")
+				$temp = StringReplace($temp, "СЃС‚СЂРѕРµРЅ.", "%")
+				$temp = StringReplace($temp, "РґРµСЂРµРІРЅРё ", "%")
+				$temp = StringReplace($temp, "Сѓ СЃС‚.", "%")
+				$temp = StringReplace($temp, "РІР±Р»РёР·Рё РґРµСЂ.", "%")
+				$temp = StringReplace($temp, "РІР±Р»РёР·Рё", "%")
+				$temp = StringReplace($temp, "РІР»Рґ.", "%")
+				$temp = StringReplace($temp, "РІР±Р».", "%")
+				$temp = StringReplace($temp, "СЃ/Рѕ", "%")
+				$temp = StringReplace($temp, "СЃ.Рѕ", "%")
+				$temp = StringReplace($temp, "Рґ.РЅР°", "%")
+				$temp = StringReplace($temp, "РЅРµРѕРїСЂ ", "%")
+				$temp = StringReplace($temp, "С‚РµСЂ.", "%")
+				$temp = StringReplace($temp, "РґРѕРј", "%")
+				$temp = StringReplace($temp, "СЃС‚СЂ.", "%")
+				$temp = StringReplace($temp, "СѓС‡-Рє", "%")
+				$temp = StringReplace($temp, "РєРІ,", "%")
+				$temp = StringReplace($temp, "СЂ-РЅ", "%")
+				$temp = StringReplace($temp, "СѓС‡.", "%")
+				$temp = StringReplace($temp, " СѓС‡ ", "%")
+				$temp = StringReplace($temp, "Рі.", "%")
+				$temp = StringReplace($temp, " Рґ ", "%")
+				$temp = StringReplace($temp, " СЃРїРє ", "%")
+				$temp = StringReplace($temp, "РґРµСЂ.", "%")
+				$temp = StringReplace($temp, "СѓР».", "%")
+				$temp = StringReplace($temp, "Рґ.", "%")
+				$temp = StringReplace($temp, "СЃС‚.", "%")
+				$temp = StringReplace($temp, "СЃ/С‚", "%")
+				$temp = StringReplace($temp, " СЃС‚ ", "%")
+				$temp = StringReplace($temp, "СЃ.", "%")
+				$temp = StringReplace($temp, "в„–", "%")
 				$temp = StringReplace($temp, ".", "%")
 				$temp = StringReplace($temp, ",", "%")
 				$temp = StringReplace($temp, '"', "%")
 				$temp = StringReplace($temp, "/", "%")
-				$temp = StringReplace($temp, "»", "%")
-				$temp = StringReplace($temp, "«", "%")
+				$temp = StringReplace($temp, "В»", "%")
+				$temp = StringReplace($temp, "В«", "%")
 				$temp = StringReplace($temp, "'", "%")
 				$temp = StringReplace($temp, " ", "%")
 				$temp = StringReplace($temp, "%%", "%")
 	$temp_Done = StringReplace($temp, "%%%", "%")
 	ClipPut ( $temp_Done )
-	;~ 	Обновляет в GUI статус выполнения
-;~ GUICtrlSetData($Label7, StringRegExpReplace(StringSplit(WinGetText("ЦОД v.1.0.8.5"), ")",1)[1],'[^0-9]',''))
+	;~ 	РћР±РЅРѕРІР»СЏРµС‚ РІ GUI СЃС‚Р°С‚СѓСЃ РІС‹РїРѕР»РЅРµРЅРёСЏ
+;~ GUICtrlSetData($Label7, StringRegExpReplace(StringSplit(WinGetText("Р¦РћР” v.1.0.8.5"), ")",1)[1],'[^0-9]',''))
 	Sleep(100)
-	Until _IsPressed(76) <> 0 ;~ Стоп по нажатию F7
+	Until _IsPressed(76) <> 0 ;~ РЎС‚РѕРї РїРѕ РЅР°Р¶Р°С‚РёСЋ F7
 EndIf
 $nMsg = GUIGetMsg()
 	Switch $nMsg

@@ -5,7 +5,7 @@
 		<property name="Top" vt="Int16">934</property>
 		<property name="Width" vt="Int16">298</property>
 		<property name="Height" vt="Int8">108</property>
-		<property name="Caption" vt="UTF8String">Помощник ЦОДД</property>
+		<property name="Caption" vt="UTF8String">РџРѕРјРѕС‰РЅРёРє Р¦РћР”Р”</property>
 		<property name="Color" vt="Ident">clBtnFace</property>
 		<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
 		<property name="Font.Color" vt="Ident">clWindowText</property>
@@ -36,7 +36,7 @@
 				<property name="Top" vt="Int8">16</property>
 				<property name="Width" vt="Int8">75</property>
 				<property name="Height" vt="Int8">38</property>
-				<property name="Caption" vt="WString">Запустить</property>
+				<property name="Caption" vt="WString">Р—Р°РїСѓСЃС‚РёС‚СЊ</property>
 				<property name="TabOrder" vt="Int8">0</property>
 				<property name="Color" vt="Ident">clBtnFace</property>
 				<property name="CtrlStyle" vt="Int32">1342373888</property>
@@ -51,7 +51,7 @@
 				<property name="Top" vt="Int8">25</property>
 				<property name="Width" vt="Int8">83</property>
 				<property name="Height" vt="Int8">24</property>
-				<property name="Caption" vt="WString">Выключен</property>
+				<property name="Caption" vt="WString">Р’С‹РєР»СЋС‡РµРЅ</property>
 				<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
 				<property name="Font.Color" vt="Ident">clRed</property>
 				<property name="Font.Height" vt="Int8">-16</property>
@@ -72,7 +72,7 @@
 				<property name="Top" vt="Int8">16</property>
 				<property name="Width" vt="Int8">75</property>
 				<property name="Height" vt="Int8">38</property>
-				<property name="Caption" vt="WString">Остановить</property>
+				<property name="Caption" vt="WString">РћСЃС‚Р°РЅРѕРІРёС‚СЊ</property>
 				<property name="TabOrder" vt="Int8">2</property>
 				<property name="Color" vt="Ident">clBtnFace</property>
 				<property name="CtrlStyle" vt="Int32">1342373888</property>
